@@ -1,15 +1,16 @@
 import hashlib
 import os
 import sys
-import logging
 
 PY_VERSION = sys.version_info[0]
-if PY_VERSION == 2:
-    import urllib2
+#Added support for both versions of python
 if PY_VERSION == 3:
     import urllib.request
+if PY_VERSION == 2:
+    import urllib2
 
 
+#receives the name of the file and returns the hash code (Cpopied from documentation :P)
 def get_hash(file_path):
     read_size = 64 * 1024
     with open(file_path, 'rb') as f:
@@ -17,6 +18,7 @@ def get_hash(file_path):
         f.seek(-read_size, os.SEEK_END)
         data += f.read(read_size)
     return hashlib.md5(data).hexdigest()
+
 
 
 def sub_downloader(file_path):
@@ -37,18 +39,13 @@ def sub_downloader(file_path):
 
             with open(root + ".srt", "wb") as subtitle:
                 subtitle.write(response)
-                logging.info("Subtitle successfully downloaded for " + file_path)
     except:
-        #Ignore exception and continue
         print("Error in fetching subtitle for " + file_path)
         print("Error", sys.exc_info())
-        logging.error("Error in fetching subtitle for " + file_path + str(sys.exc_info()))
 
 
 def main():
     root, _ = os.path.splitext(sys.argv[0])
-    logging.basicConfig(filename=root + '.log', level=logging.INFO)
-    logging.info("Started with params " + str(sys.argv))
 
     if len(sys.argv) == 1:
         print("This program requires at least one parameter")
@@ -56,7 +53,6 @@ def main():
 
     for path in sys.argv:
         if os.path.isdir(path):
-            # Iterate the root directory recursively using os.walk and for each video file present get the subtitle
             for dir_path, _, file_names in os.walk(path):
                 for filename in file_names:
                     file_path = os.path.join(dir_path, filename)
