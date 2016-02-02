@@ -1,1 +1,1 @@
-# download_subtitle
+Simple One Click Subtitle Downloader
