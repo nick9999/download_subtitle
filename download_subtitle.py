@@ -20,12 +20,19 @@ def get_hash(file_path):
     return hashlib.md5(data).hexdigest()
 
 
+#think of more possible extensions are possible
+def is_valid_extention(extension):
+    possible_extensions=[".avi", ".mp4", ".mkv", ".mpg", ".mpeg", ".mov", ".rm", ".vob", ".wmv", ".flv", ".3gp",".3g2"]
+    if extension not in possible_extensions:
+        return True
+    else :
+        return False
 
-def sub_downloader(file_path):
+def download_subtitle(file_path):
     try:
         root, extension = os.path.splitext(file_path)
-        if extension not in [".avi", ".mp4", ".mkv", ".mpg", ".mpeg", ".mov", ".rm", ".vob", ".wmv", ".flv", ".3gp",".3g2"]:
-            return
+        if is_valid_extention(extension):
+            return 
 
         if not os.path.exists(root + ".srt"):
             headers = {'User-Agent': 'SubDB/1.0 (download_subtitle/1.0; http://github.com/nick9999/download_subtitle.git)'}
@@ -40,8 +47,7 @@ def sub_downloader(file_path):
             with open(root + ".srt", "wb") as subtitle:
                 subtitle.write(response)
     except:
-        print("Error in fetching subtitle for " + file_path)
-        print("Error", sys.exc_info())
+        print("Could not get subtitle for " + file_path)
 
 
 def main():
@@ -52,13 +58,15 @@ def main():
         sys.exit(1)
 
     for path in sys.argv:
+
         if os.path.isdir(path):
+            # if this is a directory then download subtitles for each file 
             for dir_path, _, file_names in os.walk(path):
                 for filename in file_names:
                     file_path = os.path.join(dir_path, filename)
-                    sub_downloader(file_path)
+                    download_subtitle(file_path)
         else:
-            sub_downloader(path)
+            download_subtitle(path)
 
 if __name__ == '__main__':
     main()
