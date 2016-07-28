@@ -2,7 +2,7 @@ Simple One Click Subtitle Downloader
 -----------------------
 -----------------------
 
-Just For Linux Users
+For Linux Users
 
 ##Nemo/Nautilus file manager
  * Place file nemo.sh in ~/.gnome2/nemo-scripts and also change the path for download_subtitle as per required
@@ -12,4 +12,6 @@ Just For Linux Users
      or use command **chmod +x name-of-script**
  * Just right click on movie file and click Scripts and then click on nemo.sh(nautilus.sh)
 
+For Mac Users
 
+##Added support just add documentation
