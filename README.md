@@ -16,4 +16,4 @@ For Mac Users
 
 * Create the workflow in mac so that you can use this as service just by right click on the movie file you will be able to download subtitles for the video file.
 * For creating the workflow open Automator in mac by clicking command + space and then add a workflow in the section of files and folder the following picture will help you to do it.
-
+![alt tag](https://github.com/nick9999/download_subtitle/blob/master/Screen%20Shot%202017-02-28%20at%2012.32.25%20AM.png)
