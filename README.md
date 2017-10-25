@@ -5,6 +5,7 @@ Simple One Click Subtitle Downloader
 For Linux Users
 
 Nemo/Nautilus file manager
+
  * Place file nemo.sh in ~/.gnome2/nemo-scripts and also change the path for download_subtitle as per required
  * Place file nemo.sh in ~/.gnome2/nautilus-scripts and also change the path for download_subtitle as per required
  * Also make sure that script has permissions to allow it execute as a program.
